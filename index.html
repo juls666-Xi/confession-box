@@ -1023,6 +1023,16 @@
         const shareLinkInput = document.getElementById('shareLinkInput');
         const copyLinkBtn = document.getElementById('copyLinkBtn');
 
+        // API Configuration - Update this with your Render/Railway backend URL
+        // For local development, leave empty or use 'http://localhost:3000'
+        // For production, use your deployed backend URL (e.g., 'https://your-app.onrender.com')
+        const API_URL = ''; // Leave empty for same-origin, or set full backend URL
+
+        // Helper function to build API URLs
+        function getApiUrl(path) {
+            return API_URL ? `${API_URL}${path}` : path;
+        }
+
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             applyTheme();
@@ -1084,7 +1094,7 @@
             postBtn.innerHTML = '<span>⏳</span> Posting...';
 
             try {
-                const response = await fetch('/api/confessions', {
+                const response = await fetch(getApiUrl('/api/confessions'), {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -1130,7 +1140,7 @@
         // Load Confessions
         async function loadConfessions() {
             try {
-                const response = await fetch('/api/confessions');
+                const response = await fetch(getApiUrl('/api/confessions'));
                 if (response.ok) {
                     confessions = await response.json();
                     filterConfessions();
@@ -1283,10 +1293,10 @@
             }
 
             localStorage.setItem('safespace_reactions', JSON.stringify(userReactions));
-            
+
             // Try to save to backend
             try {
-                await fetch(`/api/confessions/${confessionId}/react`, {
+                await fetch(getApiUrl(`/api/confessions/${confessionId}/react`), {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ reactionType, reactions: confession.reactions })
@@ -1332,7 +1342,7 @@
 
             // Try to save to backend
             try {
-                await fetch(`/api/confessions/${confessionId}/comment`, {
+                await fetch(getApiUrl(`/api/confessions/${confessionId}/comment`), {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ comment: newComment, comments: confession.comments })
