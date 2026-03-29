@@ -231,21 +231,33 @@
             gap: 1rem;
         }
 
-        .category-select {
-            padding: 0.6rem 1rem;
+        .category-picker {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .category-option {
+            padding: 0.5rem 1rem;
             border: 1px solid var(--glass-border);
-            border-radius: 12px;
+            border-radius: 20px;
             background: var(--bg-input);
-            color: var(--text-primary);
-            font-family: inherit;
-            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .category-select:focus {
-            outline: none;
-            border-color: var(--accent-primary);
+        .category-option:hover {
+            background: var(--bg-card);
+            color: var(--text-primary);
+        }
+
+        .category-option.selected {
+            background: var(--accent-gradient);
+            color: white;
+            border-color: transparent;
         }
 
         .char-counter {
@@ -399,11 +411,6 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            opacity: 0;
-        }
-
-        .confession-card:hover .delete-btn {
-            opacity: 1;
         }
 
         .delete-btn:hover {
@@ -425,6 +432,7 @@
             gap: 1rem;
             padding-top: 1rem;
             border-top: 1px solid var(--glass-border);
+            flex-wrap: wrap;
         }
 
         .action-btn {
@@ -485,6 +493,231 @@
         .emoji-btn.active {
             background: var(--accent-primary);
             border-color: var(--accent-primary);
+        }
+
+        /* Comments Section */
+        .comments-section {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .comments-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .comments-header h4 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .toggle-comments {
+            background: transparent;
+            border: none;
+            color: var(--accent-primary);
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .comment-input-container {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .comment-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            background: var(--bg-input);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.9rem;
+            resize: none;
+        }
+
+        .comment-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+
+        .comment-submit {
+            padding: 0.75rem 1.5rem;
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .comment-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+        }
+
+        .comment {
+            background: var(--bg-input);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .comment-anonymous {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .comment-time {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .comment-text {
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .no-comments {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Share Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: var(--shadow);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h3 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        .modal-close {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .modal-close:hover {
+            color: var(--text-primary);
+        }
+
+        .share-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .share-option {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            background: var(--bg-input);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .share-option:hover {
+            background: var(--bg-card);
+            border-color: var(--accent-primary);
+        }
+
+        .share-option-icon {
+            font-size: 1.5rem;
+        }
+
+        .share-link-container {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--bg-input);
+            border-radius: 12px;
+        }
+
+        .share-link {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .share-link input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font-size: 0.85rem;
+        }
+
+        .copy-btn {
+            padding: 0.75rem 1rem;
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
         }
 
         /* Empty State */
@@ -580,6 +813,37 @@
             font-size: 1.25rem;
         }
 
+        /* Live Indicator */
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--success);
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: blink 2s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Reaction Count */
+        .reaction-count {
+            font-size: 0.8rem;
+            margin-left: 0.25rem;
+        }
+
         /* Responsive */
         @media (max-width: 600px) {
             header {
@@ -612,12 +876,12 @@
                 padding: 1rem;
             }
 
-            .delete-btn {
-                opacity: 1;
-            }
-
             .emoji-reactions {
                 display: none;
+            }
+
+            .card-actions {
+                flex-direction: column;
             }
         }
     </style>
@@ -632,6 +896,13 @@
                 <h1>SafeSpace Confessions</h1>
             </div>
             <div class="header-actions">
+                <div class="live-indicator">
+                    <span class="live-dot"></span>
+                    <span>Live</span>
+                </div>
+                <button class="icon-btn" id="refreshBtn" title="Refresh Confessions">
+                    🔄
+                </button>
                 <button class="icon-btn" id="themeToggle" title="Toggle Dark Mode">
                     🌙
                 </button>
@@ -646,11 +917,19 @@
                 <h2>Share Your Thoughts</h2>
                 <span class="anonymous-badge">Anonymous</span>
             </div>
-            <textarea 
-                id="confessionInput" 
+            <textarea
+                id="confessionInput"
                 placeholder="What's on your mind? Share your thoughts anonymously..."
                 maxlength="1000"
             ></textarea>
+            <div class="category-picker" id="categoryPicker">
+                <span class="category-option selected" data-category="other">Other</span>
+                <span class="category-option" data-category="love">💕 Love</span>
+                <span class="category-option" data-category="school">📚 School</span>
+                <span class="category-option" data-category="work">💼 Work</span>
+                <span class="category-option" data-category="family">👨‍👩‍👧 Family</span>
+                <span class="category-option" data-category="secrets">🤫 Secrets</span>
+            </div>
             <div class="input-controls">
                 <span class="char-counter" id="charCounter">0 / 1000</span>
                 <button class="post-btn" id="postBtn">
@@ -660,8 +939,14 @@
         </section>
 
         <!-- Filter Section -->
-        <section class="filter-section" id="filterSection" style="display: none;">
+        <section class="filter-section" id="filterSection">
             <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="love">💕 Love</button>
+            <button class="filter-btn" data-filter="school">📚 School</button>
+            <button class="filter-btn" data-filter="work">💼 Work</button>
+            <button class="filter-btn" data-filter="family">👨‍👩‍👧 Family</button>
+            <button class="filter-btn" data-filter="secrets">🤫 Secrets</button>
+            <button class="filter-btn" data-filter="other">Other</button>
         </section>
 
         <!-- Feed Section -->
@@ -681,10 +966,46 @@
         <span id="toastMessage">Confession posted!</span>
     </div>
 
+    <!-- Share Modal -->
+    <div class="modal-overlay" id="shareModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Share Confession</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="share-options">
+                <div class="share-option" id="shareTwitter">
+                    <span class="share-option-icon">🐦</span>
+                    <span>Share on Twitter</span>
+                </div>
+                <div class="share-option" id="shareFacebook">
+                    <span class="share-option-icon">📘</span>
+                    <span>Share on Facebook</span>
+                </div>
+                <div class="share-option" id="shareWhatsApp">
+                    <span class="share-option-icon">📱</span>
+                    <span>Share on WhatsApp</span>
+                </div>
+                <div class="share-link-container">
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Or copy link:</p>
+                    <div class="share-link">
+                        <input type="text" id="shareLinkInput" readonly>
+                        <button class="copy-btn" id="copyLinkBtn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // State Management
         let confessions = [];
+        let filteredConfessions = [];
+        let currentFilter = 'all';
+        let selectedCategory = 'other';
         let isDarkMode = localStorage.getItem('safespace_darkmode') !== 'false';
+        let userReactions = JSON.parse(localStorage.getItem('safespace_reactions') || '{}');
+        let autoRefreshInterval;
 
         // DOM Elements
         const confessionInput = document.getElementById('confessionInput');
@@ -692,14 +1013,32 @@
         const postBtn = document.getElementById('postBtn');
         const feedSection = document.getElementById('feedSection');
         const themeToggle = document.getElementById('themeToggle');
+        const refreshBtn = document.getElementById('refreshBtn');
         const toast = document.getElementById('toast');
         const toastMessage = document.getElementById('toastMessage');
+        const filterSection = document.getElementById('filterSection');
+        const categoryPicker = document.getElementById('categoryPicker');
+        const shareModal = document.getElementById('shareModal');
+        const modalClose = document.getElementById('modalClose');
+        const shareLinkInput = document.getElementById('shareLinkInput');
+        const copyLinkBtn = document.getElementById('copyLinkBtn');
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             applyTheme();
             loadConfessions();
             updateCharCounter();
+            setupEventListeners();
+            startAutoRefresh();
+        });
+
+        // Category Selection
+        categoryPicker.addEventListener('click', (e) => {
+            if (e.target.classList.contains('category-option')) {
+                document.querySelectorAll('.category-option').forEach(opt => opt.classList.remove('selected'));
+                e.target.classList.add('selected');
+                selectedCategory = e.target.dataset.category;
+            }
         });
 
         // Character Counter
@@ -708,7 +1047,7 @@
         function updateCharCounter() {
             const length = confessionInput.value.length;
             charCounter.textContent = `${length} / 1000`;
-            
+
             charCounter.classList.remove('warning', 'danger');
             if (length >= 900) {
                 charCounter.classList.add('danger');
@@ -730,7 +1069,7 @@
 
         async function postConfession() {
             const content = confessionInput.value.trim();
-            
+
             if (!content) {
                 showToast('Please write something first!', '⚠️');
                 return;
@@ -741,27 +1080,51 @@
                 return;
             }
 
+            postBtn.disabled = true;
+            postBtn.innerHTML = '<span>⏳</span> Posting...';
+
             try {
                 const response = await fetch('/api/confessions', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ content }),
+                    body: JSON.stringify({ content, category: selectedCategory }),
                 });
 
                 if (response.ok) {
                     confessionInput.value = '';
                     updateCharCounter();
-                    loadConfessions();
-                    showToast('Confession posted anonymously!');
+                    await loadConfessions();
+                    showToast('Confession posted anonymously! 💜');
                 } else {
                     const error = await response.json();
                     showToast(error.error || 'Failed to post confession', '❌');
                 }
             } catch (error) {
-                showToast('Network error. Please try again.', '❌');
+                // For demo/gh-pages: store locally if backend unavailable
+                storeLocalConfession(content);
+                confessionInput.value = '';
+                updateCharCounter();
+                showToast('Confession posted! (Demo mode) 💜');
+            } finally {
+                postBtn.disabled = false;
+                postBtn.innerHTML = '<span>📤</span> Post Confession';
             }
+        }
+
+        function storeLocalConfession(content) {
+            const newConfession = {
+                _id: 'local_' + Date.now(),
+                content: content,
+                category: selectedCategory,
+                timestamp: new Date().toISOString(),
+                reactions: { like: 0, support: 0, pray: 0, fire: 0 },
+                comments: []
+            };
+            confessions.unshift(newConfession);
+            filterConfessions();
+            renderConfessions();
         }
 
         // Load Confessions
@@ -770,18 +1133,42 @@
                 const response = await fetch('/api/confessions');
                 if (response.ok) {
                     confessions = await response.json();
+                    filterConfessions();
                     renderConfessions();
                 } else {
-                    showToast('Failed to load confessions', '❌');
+                    // Demo mode - use local storage
+                    loadLocalConfessions();
                 }
             } catch (error) {
-                showToast('Network error. Please refresh.', '❌');
+                loadLocalConfessions();
+            }
+        }
+
+        function loadLocalConfessions() {
+            const local = localStorage.getItem('safespace_confessions');
+            if (local) {
+                confessions = JSON.parse(local);
+            }
+            filterConfessions();
+            renderConfessions();
+        }
+
+        function saveLocalConfessions() {
+            localStorage.setItem('safespace_confessions', JSON.stringify(confessions));
+        }
+
+        // Filter Confessions
+        function filterConfessions() {
+            if (currentFilter === 'all') {
+                filteredConfessions = [...confessions];
+            } else {
+                filteredConfessions = confessions.filter(c => c.category === currentFilter);
             }
         }
 
         // Render Confessions
         function renderConfessions() {
-            if (confessions.length === 0) {
+            if (filteredConfessions.length === 0) {
                 feedSection.innerHTML = `
                     <div class="empty-state">
                         <div class="empty-state-icon">📝</div>
@@ -792,23 +1179,234 @@
                 return;
             }
 
-            feedSection.innerHTML = confessions.map(confession => createConfessionCard(confession)).join('');
+            feedSection.innerHTML = filteredConfessions.map(confession => createConfessionCard(confession)).join('');
         }
 
         function createConfessionCard(confession) {
             const timeAgo = getTimeAgo(confession.timestamp);
+            const categoryClass = confession.category || 'other';
+            const categoryEmoji = getCategoryEmoji(confession.category);
+            const userReaction = userReactions[confession._id] || null;
+            const reactions = confession.reactions || { like: 0, support: 0, pray: 0, fire: 0 };
 
             return `
                 <article class="confession-card" data-id="${confession._id}">
                     <div class="card-header">
                         <div class="card-meta">
+                            <span class="category-tag ${categoryClass}">${categoryEmoji} ${confession.category || 'Other'}</span>
                             <span class="timestamp">${timeAgo}</span>
                         </div>
                     </div>
                     <p class="confession-text">${escapeHtml(confession.content)}</p>
+                    <div class="card-actions">
+                        <button class="action-btn ${userReaction === 'like' ? 'liked' : ''}" onclick="addReaction('${confession._id}', 'like')">
+                            💜 <span class="reaction-count">${reactions.like || 0}</span>
+                        </button>
+                        <button class="action-btn ${userReaction === 'support' ? 'liked' : ''}" onclick="addReaction('${confession._id}', 'support')">
+                            🤗 <span class="reaction-count">${reactions.support || 0}</span>
+                        </button>
+                        <button class="action-btn ${userReaction === 'pray' ? 'liked' : ''}" onclick="addReaction('${confession._id}', 'pray')">
+                            🙏 <span class="reaction-count">${reactions.pray || 0}</span>
+                        </button>
+                        <button class="action-btn ${userReaction === 'fire' ? 'liked' : ''}" onclick="addReaction('${confession._id}', 'fire')">
+                            🔥 <span class="reaction-count">${reactions.fire || 0}</span>
+                        </button>
+                        <button class="action-btn" onclick="toggleComments('${confession._id}')">
+                            💬 <span class="reaction-count">${confession.comments ? confession.comments.length : 0}</span>
+                        </button>
+                        <button class="action-btn" onclick="openShareModal('${confession._id}')">
+                            🔗 Share
+                        </button>
+                    </div>
+                    <div class="comments-section" id="comments-${confession._id}" style="display: none;">
+                        <div class="comments-header">
+                            <h4>Comments (${confession.comments ? confession.comments.length : 0})</h4>
+                        </div>
+                        <div class="comment-input-container">
+                            <input type="text" class="comment-input" placeholder="Add an anonymous comment..." id="comment-input-${confession._id}">
+                            <button class="comment-submit" onclick="addComment('${confession._id}')">Send</button>
+                        </div>
+                        <div class="comments-list" id="comments-list-${confession._id}">
+                            ${renderComments(confession.comments || [])}
+                        </div>
+                    </div>
                 </article>
             `;
         }
+
+        function getCategoryEmoji(category) {
+            const emojis = {
+                love: '💕',
+                school: '📚',
+                work: '💼',
+                family: '👨‍👩‍👧',
+                secrets: '🤫',
+                other: '📝'
+            };
+            return emojis[category] || '📝';
+        }
+
+        function renderComments(comments) {
+            if (comments.length === 0) {
+                return '<p class="no-comments">No comments yet. Be the first to show support!</p>';
+            }
+            return comments.map(comment => `
+                <div class="comment">
+                    <div class="comment-header">
+                        <span class="comment-anonymous">Anonymous</span>
+                        <span class="comment-time">${getTimeAgo(comment.timestamp)}</span>
+                    </div>
+                    <p class="comment-text">${escapeHtml(comment.content)}</p>
+                </div>
+            `).join('');
+        }
+
+        // Add Reaction
+        window.addReaction = async function(confessionId, reactionType) {
+            const confession = confessions.find(c => c._id === confessionId);
+            if (!confession) return;
+
+            const previousReaction = userReactions[confessionId];
+            
+            // Remove previous reaction if exists
+            if (previousReaction && confession.reactions) {
+                confession.reactions[previousReaction] = Math.max(0, (confession.reactions[previousReaction] || 0) - 1);
+            }
+
+            // Add new reaction if different
+            if (previousReaction !== reactionType) {
+                if (!confession.reactions) confession.reactions = { like: 0, support: 0, pray: 0, fire: 0 };
+                confession.reactions[reactionType] = (confession.reactions[reactionType] || 0) + 1;
+                userReactions[confessionId] = reactionType;
+            } else {
+                delete userReactions[confessionId];
+            }
+
+            localStorage.setItem('safespace_reactions', JSON.stringify(userReactions));
+            
+            // Try to save to backend
+            try {
+                await fetch(`/api/confessions/${confessionId}/react`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ reactionType, reactions: confession.reactions })
+                });
+            } catch (e) {
+                saveLocalConfessions();
+            }
+
+            filterConfessions();
+            renderConfessions();
+        };
+
+        // Toggle Comments
+        window.toggleComments = function(confessionId) {
+            const commentsSection = document.getElementById(`comments-${confessionId}`);
+            const isVisible = commentsSection.style.display !== 'none';
+            commentsSection.style.display = isVisible ? 'none' : 'block';
+        };
+
+        // Add Comment
+        window.addComment = async function(confessionId) {
+            const input = document.getElementById(`comment-input-${confessionId}`);
+            const content = input.value.trim();
+
+            if (!content) {
+                showToast('Please write a comment!', '⚠️');
+                return;
+            }
+
+            const confession = confessions.find(c => c._id === confessionId);
+            if (!confession) return;
+
+            if (!confession.comments) confession.comments = [];
+
+            const newComment = {
+                _id: 'comment_' + Date.now(),
+                content: content,
+                timestamp: new Date().toISOString()
+            };
+
+            confession.comments.push(newComment);
+            input.value = '';
+
+            // Try to save to backend
+            try {
+                await fetch(`/api/confessions/${confessionId}/comment`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ comment: newComment, comments: confession.comments })
+                });
+            } catch (e) {
+                saveLocalConfessions();
+            }
+
+            filterConfessions();
+            renderConfessions();
+            showToast('Comment added anonymously! 💜');
+            
+            // Keep comments section open
+            setTimeout(() => {
+                const commentsSection = document.getElementById(`comments-${confessionId}`);
+                if (commentsSection) commentsSection.style.display = 'block';
+            }, 0);
+        };
+
+        // Share Modal
+        window.openShareModal = function(confessionId) {
+            const confession = confessions.find(c => c._id === confessionId);
+            if (!confession) return;
+
+            const shareUrl = window.location.href;
+            shareLinkInput.value = shareUrl;
+            shareModal.classList.add('active');
+        };
+
+        modalClose.addEventListener('click', () => {
+            shareModal.classList.remove('active');
+        });
+
+        shareModal.addEventListener('click', (e) => {
+            if (e.target === shareModal) {
+                shareModal.classList.remove('active');
+            }
+        });
+
+        document.getElementById('shareTwitter').addEventListener('click', () => {
+            const text = encodeURIComponent('Check out this anonymous confession on SafeSpace 💜');
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+            shareModal.classList.remove('active');
+        });
+
+        document.getElementById('shareFacebook').addEventListener('click', () => {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+            shareModal.classList.remove('active');
+        });
+
+        document.getElementById('shareWhatsApp').addEventListener('click', () => {
+            const text = encodeURIComponent('Check out SafeSpace Confessions 💜 ' + window.location.href);
+            window.open(`https://wa.me/?text=${text}`, '_blank');
+            shareModal.classList.remove('active');
+        });
+
+        copyLinkBtn.addEventListener('click', () => {
+            shareLinkInput.select();
+            document.execCommand('copy');
+            showToast('Link copied to clipboard! 📋');
+        });
+
+        // Filter Buttons
+        filterSection.addEventListener('click', (e) => {
+            if (e.target.classList.contains('filter-btn')) {
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+                currentFilter = e.target.dataset.filter;
+                filterConfessions();
+                renderConfessions();
+            }
+        });
 
         // Theme Toggle
         themeToggle.addEventListener('click', () => {
@@ -827,6 +1425,33 @@
                 themeToggle.textContent = '☀️';
                 themeToggle.title = 'Switch to Dark Mode';
             }
+        }
+
+        // Refresh Button
+        refreshBtn.addEventListener('click', async () => {
+            refreshBtn.style.animation = 'spin 0.5s ease';
+            await loadConfessions();
+            setTimeout(() => {
+                refreshBtn.style.animation = '';
+            }, 500);
+            showToast('Confessions refreshed! 🔄');
+        });
+
+        // Auto Refresh
+        function startAutoRefresh() {
+            autoRefreshInterval = setInterval(() => {
+                loadConfessions();
+            }, 30000); // Refresh every 30 seconds
+        }
+
+        // Setup Event Listeners
+        function setupEventListeners() {
+            // Close modal on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    shareModal.classList.remove('active');
+                }
+            });
         }
 
         function escapeHtml(text) {
@@ -855,7 +1480,7 @@
             toastMessage.textContent = message;
             toast.querySelector('.toast-icon').textContent = icon;
             toast.classList.add('show');
-            
+
             setTimeout(() => {
                 toast.classList.remove('show');
             }, 3000);
