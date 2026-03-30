@@ -143,8 +143,14 @@ app.post('/api/confessions/:id/comment', async (req, res) => {
       return res.status(404).json({ error: 'Confession not found' });
     }
 
-    // Update comments array
-    confession.comments = comments;
+    // Create new comment object with proper schema
+    const newComment = {
+      content: comment.content.trim(),
+      timestamp: comment.timestamp || new Date()
+    };
+
+    // Push new comment to array
+    confession.comments.push(newComment);
     await confession.save();
 
     res.json({ success: true, comments: confession.comments });
